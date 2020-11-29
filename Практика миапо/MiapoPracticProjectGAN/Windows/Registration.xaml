@@ -1,0 +1,30 @@
+﻿<Window x:Class="MiapoPracticProjectGAN.Windows.Registration"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MiapoPracticProjectGAN.Windows"
+        mc:Ignorable="d"
+        Title="Registration" Height="516" Width="327">
+    <Grid>
+        <Button Content="Отмена" HorizontalAlignment="Left" Margin="10,444,0,0" VerticalAlignment="Top" Width="299" Click="Button_Click"/>
+        <TextBox x:Name="LoginTxt" HorizontalAlignment="Left" Height="23" Margin="10,41,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="299"/>
+        <TextBox x:Name="LastNameTxt" HorizontalAlignment="Left" Height="23" Margin="10,159,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="299" RenderTransformOrigin="-1.1,-0.435"/>
+        <TextBox x:Name="PhoneTxt" HorizontalAlignment="Left" Height="23" Margin="10,391,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="299"/>
+        <TextBox x:Name="MiddleNameTxt" HorizontalAlignment="Left" Height="23" Margin="10,272,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="299"/>
+        <TextBox x:Name="PasswordTxt" HorizontalAlignment="Left" Height="23" Margin="10,100,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="299"/>
+        <TextBox x:Name="FirstNameTxt" HorizontalAlignment="Left" Height="23" Margin="10,213,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="299"/>
+        <TextBox x:Name="EmailTxt" HorizontalAlignment="Left" Height="23" Margin="10,331,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="299"/>
+        <Label Content="Пароль" HorizontalAlignment="Left" Margin="10,69,0,0" VerticalAlignment="Top"/>
+        <Label Content="Фамилия" HorizontalAlignment="Left" Margin="10,128,0,0" VerticalAlignment="Top"/>
+        <Label Content="Отчество" HorizontalAlignment="Left" Margin="10,241,0,0" VerticalAlignment="Top"/>
+        <Label HorizontalAlignment="Left" Margin="566,139,0,0" VerticalAlignment="Top"/>
+        <Label Content="Номер телефона" HorizontalAlignment="Left" Margin="10,360,0,0" VerticalAlignment="Top"/>
+        <Label HorizontalAlignment="Left" Margin="405,149,0,0" VerticalAlignment="Top"/>
+        <Label Content="Имя" HorizontalAlignment="Left" Margin="10,187,0,0" VerticalAlignment="Top"/>
+        <Label Content="Логин" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+        <Label Content="Email" HorizontalAlignment="Left" Margin="10,300,0,0" VerticalAlignment="Top"/>
+        <Button Content="Зарегестрироваться" HorizontalAlignment="Left" Margin="10,419,0,0" VerticalAlignment="Top" Width="299" Click="Button_Click_1"/>
+
+    </Grid>
+</Window>

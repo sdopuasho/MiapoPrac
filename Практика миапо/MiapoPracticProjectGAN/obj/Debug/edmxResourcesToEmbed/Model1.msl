@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище ganMiapodbModelContainer" CdmEntityContainer="ganMiapodbEntities">
+    <EntitySetMapping Name="Employees">
+      <EntityTypeMapping TypeName="ganMiapodbModel.Employees">
+        <MappingFragment StoreEntitySet="Employees">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Firstname" ColumnName="Firstname" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="ContactNumber" ColumnName="ContactNumber" />
+          <ScalarProperty Name="Login" ColumnName="Login" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProductOnShipment">
+      <EntityTypeMapping TypeName="ganMiapodbModel.ProductOnShipment">
+        <MappingFragment StoreEntitySet="ProductOnShipment">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="FK_ShipmentEmployee" ColumnName="FK_ShipmentEmployee" />
+          <ScalarProperty Name="FK_Product_id" ColumnName="FK_Product_id" />
+          <ScalarProperty Name="QuantityOfShipment" ColumnName="QuantityOfShipment" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Products">
+      <EntityTypeMapping TypeName="ganMiapodbModel.Products">
+        <MappingFragment StoreEntitySet="Products">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Manufacture" ColumnName="Manufacture" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ShipmentEmployee">
+      <EntityTypeMapping TypeName="ganMiapodbModel.ShipmentEmployee">
+        <MappingFragment StoreEntitySet="ShipmentEmployee">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="FK_Employee_id" ColumnName="FK_Employee_id" />
+          <ScalarProperty Name="FK_Warehouse_id" ColumnName="FK_Warehouse_id" />
+          <ScalarProperty Name="DateOfShipment" ColumnName="DateOfShipment" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="ganMiapodbModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Warehouse">
+      <EntityTypeMapping TypeName="ganMiapodbModel.Warehouse">
+        <MappingFragment StoreEntitySet="Warehouse">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Number" ColumnName="Number" />
+          <ScalarProperty Name="LegalAdres" ColumnName="LegalAdres" />
+          <ScalarProperty Name="ContactNumber" ColumnName="ContactNumber" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

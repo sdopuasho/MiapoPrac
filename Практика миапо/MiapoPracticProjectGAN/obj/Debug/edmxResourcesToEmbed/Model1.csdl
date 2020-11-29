@@ -1,0 +1,143 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ganMiapodbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Employees">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Firstname" Type="String" MaxLength="45" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="LastName" Type="String" MaxLength="45" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="MiddleName" Type="String" MaxLength="45" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ContactNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="ShipmentEmployee" Relationship="Self.FK_ShipmentEmployee_Employees" FromRole="Employees" ToRole="ShipmentEmployee" />
+  </EntityType>
+  <EntityType Name="ProductOnShipment">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FK_ShipmentEmployee" Type="Int32" Nullable="false" />
+    <Property Name="FK_Product_id" Type="Int32" Nullable="false" />
+    <Property Name="QuantityOfShipment" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Products" Relationship="Self.FK_ProductOnShipment_Products" FromRole="ProductOnShipment" ToRole="Products" />
+    <NavigationProperty Name="ShipmentEmployee" Relationship="Self.FK_ProductOnShipment_ShipmentEmployee" FromRole="ProductOnShipment" ToRole="ShipmentEmployee" />
+  </EntityType>
+  <EntityType Name="Products">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="45" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Manufacture" Type="String" MaxLength="45" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="ProductOnShipment" Relationship="Self.FK_ProductOnShipment_Products" FromRole="Products" ToRole="ProductOnShipment" />
+  </EntityType>
+  <EntityType Name="ShipmentEmployee">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FK_Employee_id" Type="Int32" Nullable="false" />
+    <Property Name="FK_Warehouse_id" Type="Int32" Nullable="false" />
+    <Property Name="DateOfShipment" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Employees" Relationship="Self.FK_ShipmentEmployee_Employees" FromRole="ShipmentEmployee" ToRole="Employees" />
+    <NavigationProperty Name="ProductOnShipment" Relationship="Self.FK_ProductOnShipment_ShipmentEmployee" FromRole="ShipmentEmployee" ToRole="ProductOnShipment" />
+    <NavigationProperty Name="Warehouse" Relationship="Self.FK_ShipmentEmployee_Warehouse" FromRole="ShipmentEmployee" ToRole="Warehouse" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Warehouse">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Number" Type="Int32" Nullable="false" />
+    <Property Name="LegalAdres" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ContactNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Quantity" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="ShipmentEmployee" Relationship="Self.FK_ShipmentEmployee_Warehouse" FromRole="Warehouse" ToRole="ShipmentEmployee" />
+  </EntityType>
+  <Association Name="FK_ShipmentEmployee_Employees">
+    <End Role="Employees" Type="Self.Employees" Multiplicity="1" />
+    <End Role="ShipmentEmployee" Type="Self.ShipmentEmployee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employees">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ShipmentEmployee">
+        <PropertyRef Name="FK_Employee_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProductOnShipment_Products">
+    <End Role="Products" Type="Self.Products" Multiplicity="1" />
+    <End Role="ProductOnShipment" Type="Self.ProductOnShipment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Products">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ProductOnShipment">
+        <PropertyRef Name="FK_Product_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProductOnShipment_ShipmentEmployee">
+    <End Role="ShipmentEmployee" Type="Self.ShipmentEmployee" Multiplicity="1" />
+    <End Role="ProductOnShipment" Type="Self.ProductOnShipment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ShipmentEmployee">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ProductOnShipment">
+        <PropertyRef Name="FK_ShipmentEmployee" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ShipmentEmployee_Warehouse">
+    <End Role="Warehouse" Type="Self.Warehouse" Multiplicity="1" />
+    <End Role="ShipmentEmployee" Type="Self.ShipmentEmployee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Warehouse">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ShipmentEmployee">
+        <PropertyRef Name="FK_Warehouse_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ganMiapodbEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Employees" EntityType="Self.Employees" />
+    <EntitySet Name="ProductOnShipment" EntityType="Self.ProductOnShipment" />
+    <EntitySet Name="Products" EntityType="Self.Products" />
+    <EntitySet Name="ShipmentEmployee" EntityType="Self.ShipmentEmployee" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="Warehouse" EntityType="Self.Warehouse" />
+    <AssociationSet Name="FK_ShipmentEmployee_Employees" Association="Self.FK_ShipmentEmployee_Employees">
+      <End Role="Employees" EntitySet="Employees" />
+      <End Role="ShipmentEmployee" EntitySet="ShipmentEmployee" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProductOnShipment_Products" Association="Self.FK_ProductOnShipment_Products">
+      <End Role="Products" EntitySet="Products" />
+      <End Role="ProductOnShipment" EntitySet="ProductOnShipment" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProductOnShipment_ShipmentEmployee" Association="Self.FK_ProductOnShipment_ShipmentEmployee">
+      <End Role="ShipmentEmployee" EntitySet="ShipmentEmployee" />
+      <End Role="ProductOnShipment" EntitySet="ProductOnShipment" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ShipmentEmployee_Warehouse" Association="Self.FK_ShipmentEmployee_Warehouse">
+      <End Role="Warehouse" EntitySet="Warehouse" />
+      <End Role="ShipmentEmployee" EntitySet="ShipmentEmployee" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29519.181
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MiapoPracticProjectGAN", "MiapoPracticProjectGAN\MiapoPracticProjectGAN.csproj", "{ABFAC1BD-411B-4790-8660-F80CF0AD0B68}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MiapoTest", "MiapoTest\MiapoTest.csproj", "{3CDA8E97-3F66-46E6-B3F6-29FCC5862AAF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{ABFAC1BD-411B-4790-8660-F80CF0AD0B68}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ABFAC1BD-411B-4790-8660-F80CF0AD0B68}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ABFAC1BD-411B-4790-8660-F80CF0AD0B68}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ABFAC1BD-411B-4790-8660-F80CF0AD0B68}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3CDA8E97-3F66-46E6-B3F6-29FCC5862AAF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3CDA8E97-3F66-46E6-B3F6-29FCC5862AAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3CDA8E97-3F66-46E6-B3F6-29FCC5862AAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3CDA8E97-3F66-46E6-B3F6-29FCC5862AAF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CDFBA50B-5D81-44A8-9EF8-2FAF380B9852}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,135 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище ganMiapodbModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Employees">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Firstname" Type="nvarchar" MaxLength="45" Nullable="false" />
+    <Property Name="LastName" Type="nvarchar" MaxLength="45" Nullable="false" />
+    <Property Name="MiddleName" Type="nvarchar" MaxLength="45" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ContactNumber" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="Login" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ProductOnShipment">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FK_ShipmentEmployee" Type="int" Nullable="false" />
+    <Property Name="FK_Product_id" Type="int" Nullable="false" />
+    <Property Name="QuantityOfShipment" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Products">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="45" Nullable="false" />
+    <Property Name="Manufacture" Type="nvarchar" MaxLength="45" />
+  </EntityType>
+  <EntityType Name="ShipmentEmployee">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FK_Employee_id" Type="int" Nullable="false" />
+    <Property Name="FK_Warehouse_id" Type="int" Nullable="false" />
+    <Property Name="DateOfShipment" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="Warehouse">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Number" Type="int" Nullable="false" />
+    <Property Name="LegalAdres" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="ContactNumber" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Quantity" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_ProductOnShipment_Products">
+    <End Role="Products" Type="Self.Products" Multiplicity="1" />
+    <End Role="ProductOnShipment" Type="Self.ProductOnShipment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Products">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ProductOnShipment">
+        <PropertyRef Name="FK_Product_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProductOnShipment_ShipmentEmployee">
+    <End Role="ShipmentEmployee" Type="Self.ShipmentEmployee" Multiplicity="1" />
+    <End Role="ProductOnShipment" Type="Self.ProductOnShipment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ShipmentEmployee">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ProductOnShipment">
+        <PropertyRef Name="FK_ShipmentEmployee" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ShipmentEmployee_Employees">
+    <End Role="Employees" Type="Self.Employees" Multiplicity="1" />
+    <End Role="ShipmentEmployee" Type="Self.ShipmentEmployee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employees">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ShipmentEmployee">
+        <PropertyRef Name="FK_Employee_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ShipmentEmployee_Warehouse">
+    <End Role="Warehouse" Type="Self.Warehouse" Multiplicity="1" />
+    <End Role="ShipmentEmployee" Type="Self.ShipmentEmployee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Warehouse">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ShipmentEmployee">
+        <PropertyRef Name="FK_Warehouse_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Хранилище ganMiapodbModelContainer">
+    <EntitySet Name="Employees" EntityType="Self.Employees" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProductOnShipment" EntityType="Self.ProductOnShipment" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Products" EntityType="Self.Products" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ShipmentEmployee" EntityType="Self.ShipmentEmployee" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Warehouse" EntityType="Self.Warehouse" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_ProductOnShipment_Products" Association="Self.FK_ProductOnShipment_Products">
+      <End Role="Products" EntitySet="Products" />
+      <End Role="ProductOnShipment" EntitySet="ProductOnShipment" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProductOnShipment_ShipmentEmployee" Association="Self.FK_ProductOnShipment_ShipmentEmployee">
+      <End Role="ShipmentEmployee" EntitySet="ShipmentEmployee" />
+      <End Role="ProductOnShipment" EntitySet="ProductOnShipment" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ShipmentEmployee_Employees" Association="Self.FK_ShipmentEmployee_Employees">
+      <End Role="Employees" EntitySet="Employees" />
+      <End Role="ShipmentEmployee" EntitySet="ShipmentEmployee" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ShipmentEmployee_Warehouse" Association="Self.FK_ShipmentEmployee_Warehouse">
+      <End Role="Warehouse" EntitySet="Warehouse" />
+      <End Role="ShipmentEmployee" EntitySet="ShipmentEmployee" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
